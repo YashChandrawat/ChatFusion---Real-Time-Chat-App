@@ -1,0 +1,60 @@
+.container-homepage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #ff2770 25%,
+    #ff2770 25%,
+    transparent 5%,
+    transparent 35%,
+    #ff2770 50%
+  );
+  animation: animate 30s linear infinite;
+  border-radius: 20px;
+  z-index: 1; /* Add this line to adjust the stacking order */
+}
+
+.container-homepage::before {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #45f3ff 0%,
+    #45f3ff 5%,
+    transparent 5%,
+    transparent 35%,
+    #45f3ff 50%
+  );
+  animation: animate 30s linear infinite;
+  border-radius: 20px;
+  animation-delay: -4s; /* Adjust the delay to match your animation duration */
+}
+
+.container-homepage::after {
+  content: " ";
+  position: absolute;
+  inset: 8px;
+  background: #2d2d39;
+  border-radius: 15px;
+  border: 9px solid #25252b;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes animate {
+  0% {
+    --a: 0deg;
+  }
+  100% {
+    --a: 360deg;
+  }
+}
