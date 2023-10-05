@@ -6,12 +6,12 @@ import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, PhoneIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
-import logo from "./Logo3.png"
+import logo from "./Logo3.png";
 import "./SingleChat.css";
 
 import io from "socket.io-client";
@@ -28,8 +28,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
-
-  
 
   const defaultOptions = {
     loop: true,
@@ -181,6 +179,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
             />
+
             {messages &&
               (!selectedChat.isGroupChat ? (
                 <>
@@ -200,12 +199,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 </>
               ))}
           </Text>
+
           <Box
             d="flex"
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            bg="#E8E8E8"
+            bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
             w="100%"
             h="100%"
             borderRadius="lg"
@@ -244,18 +244,25 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <Input
-                variant="filled"
-                bg="#E0E0E0"
+                variant="ghost"
+                bg="#36363b"
                 placeholder="Enter a message.."
                 value={newMessage}
                 onChange={typingHandler}
+                color={"white"}
               />
             </FormControl>
           </Box>
         </>
       ) : (
         // to get socket.io on same page
-        <Box d="flex" alignItems="center" justifyContent="center" h="100%" flexDirection={"column"}>
+        <Box
+          d="flex"
+          alignItems="center"
+          justifyContent="center"
+          h="100%"
+          flexDirection={"column"}
+        >
           <Text fontSize="3xl" pb={3} fontFamily="QuickSand">
             Click on a user to start exploring Chat-Fusion
           </Text>

@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 
-*{
+* {
   color: black;
 }
 
@@ -13,6 +13,32 @@
   /* background-image: url("./background.png"); */
   background-position: center;
   background-size: cover;
+}
+
+.App1 {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  background: linear-gradient(
+    45deg,
+    #4caf50,
+    #2196f3
+  ); /* Initial gradient colors */
+  background-size: 200% 200%; /* Make the gradient cover the entire container */
+  animation: gradientAnimation 5s linear infinite; /* Adjust the duration and animation type as needed */
+}
+
+/* Create the animation keyframes */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 ::-webkit-scrollbar {

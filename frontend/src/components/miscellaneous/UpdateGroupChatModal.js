@@ -1,4 +1,4 @@
-import { ViewIcon } from "@chakra-ui/icons";
+import { ViewIcon, PhoneIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -21,6 +21,8 @@ import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
+import "./UpdateGroupChatModel.css";
+import {BiSolidVideo} from "react-icons/bi";
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -205,7 +207,12 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   return (
     <>
-      <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      <div className="icon-settlement">
+        <IconButton d={{ base: "flex" }} icon={<PhoneIcon />} />
+        {/* <BiSolidVideo/> */}
+        <IconButton d={{ base: "flex" }} icon={<BiSolidVideo />} />
+        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      </div>
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />

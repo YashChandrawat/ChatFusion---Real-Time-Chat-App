@@ -81,7 +81,7 @@ const MyChats = ({ fetchAgain }) => {
         d="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
+        bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
         w="100%"
         h="100%"
         borderRadius="lg"

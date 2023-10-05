@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
+import favicon from "./favicon.png";
 import {
   Menu,
   MenuButton,
@@ -16,7 +17,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from "@chakra-ui/modal";
-import logo from "../Logo3.png"
+import logo from "../Logo3.png";
 import { Tooltip } from "@chakra-ui/tooltip";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
@@ -32,6 +33,7 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+import "./SideDrawer.css";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -133,19 +135,23 @@ function SideDrawer() {
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
-      >
-        <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
-            <i className="fas fa-search"></i>
-            <Text d={{ base: "none", md: "flex" }} px={4}>
-              Search User
-            </Text>
-          </Button>
-        </Tooltip>
-        <Text fontSize="2xl" fontFamily="QuickSand">
-              CHAT-FUSION
-        </Text>
+        
+>
+        <div className="logo-container">
+          <Text fontSize="2xl" fontFamily="QuickSand" d={"flex"} >
+            <img src={favicon} alt="favi" className="favicon" />
+            CHAT-FUSION
+          </Text>
+        </div>
         <div>
+          <Tooltip label="Search Users to chat" hasArrow placement="right">
+            <Button variant="ghost" onClick={onOpen}>
+              <i className="fas fa-search"></i>
+              <Text d={{ base: "none", md: "flex" }} px={4}>
+                Search User
+              </Text>
+            </Button>
+          </Tooltip>
           <Menu>
             <MenuButton p={1}>
               <NotificationBadge
@@ -191,7 +197,7 @@ function SideDrawer() {
         </div>
       </Box>
 
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>

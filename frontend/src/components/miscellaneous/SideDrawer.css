@@ -1,0 +1,14 @@
+/* SideDrawer.css */
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+  }
+  
+  .favicon {
+    width: 40px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add spacing between the logo and text */
+    background-color: black;
+  }
+  
