@@ -1,4 +1,4 @@
-import { ViewIcon, PhoneIcon } from "@chakra-ui/icons";
+import { ViewIcon, PhoneIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -205,13 +205,25 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
-  
   return (
     <>
       <div className="icon-settlement">
-        <IconButton d={{ base: "flex" }} icon={<PhoneIcon />} />
-        <IconButton d={{ base: "flex" }} icon={<BiSolidVideo />} />
-        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+        <IconButton
+          d={{ base: "flex" }}
+          icon={<PhoneIcon />}
+          style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+        />
+        <IconButton
+          d={{ base: "flex" }}
+          icon={<BiSolidVideo />}
+          style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+        />
+        <IconButton
+          d={{ base: "flex" }}
+          icon={<HamburgerIcon />}
+          onClick={onOpen}
+          // style={{ backgroundColor: "#5E548C"}}
+        />
       </div>
 
       <Modal onClose={onClose} isOpen={isOpen} isCentered>

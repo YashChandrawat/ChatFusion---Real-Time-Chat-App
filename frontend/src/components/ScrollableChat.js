@@ -33,14 +33,15 @@ const ScrollableChat = ({ messages }) => {
                     cursor="pointer"
                     name={m.sender.name}
                     src={m.sender.pic}
+                    boxShadow={"0px 0px 0px black"}
                   />
                 </Tooltip>
               )}
               <span
                 style={{
-                  color:`${m.sender._id === user._id ? "white" : "black"}`,
+                  color: `${m.sender._id === user._id ? "black" : "white"}`,
                   backgroundColor: `${
-                    m.sender._id === user._id ? "#433491" : "#D3D3D3"
+                    m.sender._id === user._id ? "#D3D3D3" : "#433491"
                   }`,
                   marginLeft: isSameSenderMargin(messages, m, i, user._id),
                   marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10,

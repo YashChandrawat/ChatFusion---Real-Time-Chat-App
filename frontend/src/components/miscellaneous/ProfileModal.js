@@ -1,4 +1,4 @@
-import { ViewIcon, PhoneIcon } from "@chakra-ui/icons";
+import { ViewIcon, PhoneIcon,HamburgerIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -37,9 +37,9 @@ const ProfileModal = ({ user, children }) => {
           />
           <IconButton
             d={{ base: "flex" }}
-            icon={<ViewIcon />}
+            icon={<HamburgerIcon />}
             onClick={onOpen}
-            style={{ backgroundColor: "#5E548C"}}
+            // style={{ backgroundColor: "#5E548C"}}
           />
         </div>
       )}

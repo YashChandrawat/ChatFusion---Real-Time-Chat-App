@@ -173,6 +173,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
+            borderBottom={"3px solid black"}
           >
             <IconButton
               d={{ base: "flex", md: "none" }}
@@ -183,6 +184,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             {messages &&
               (!selectedChat.isGroupChat ? (
                 <>
+                  {}
                   {getSender(user, selectedChat.users)}
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
@@ -205,7 +207,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            // bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
+            style={{
+              // backgroundColor : '#d4f3ef',
+              backgroundSize: "cover",
+              background:
+                "url(https://cdn.join.chat/app/uploads/2020/05/whatsapp-bg.png)",
+            }}
             w="100%"
             h="100%"
             borderRadius="lg"
