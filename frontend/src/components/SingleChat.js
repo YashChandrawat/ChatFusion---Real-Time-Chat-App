@@ -2,7 +2,7 @@ import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import "./styles.css";
-import { IconButton, Spinner, useToast } from "@chakra-ui/react";
+import { IconButton, Spinner, background, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -11,8 +11,8 @@ import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
-import logo from "./Logo3.png";
 import "./SingleChat.css";
+// import {IoSend} from "react-icons/io"
 
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
@@ -205,7 +205,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
+            // bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
             w="100%"
             h="100%"
             borderRadius="lg"
@@ -244,12 +244,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <Input
-                variant="ghost"
-                bg="#36363b"
+                variant="outline"
+                bg={"#D3D3D3"}
                 placeholder="Enter a message.."
                 value={newMessage}
                 onChange={typingHandler}
-                color={"white"}
+                color={"black"}
               />
             </FormControl>
           </Box>

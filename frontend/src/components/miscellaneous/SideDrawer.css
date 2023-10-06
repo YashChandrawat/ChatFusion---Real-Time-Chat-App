@@ -2,7 +2,8 @@
 
 .logo-container {
     display: flex;
-    align-items: center; /* Vertically center items */
+    align-items: center;
+    /* Vertically center items */
   }
   
   .favicon {

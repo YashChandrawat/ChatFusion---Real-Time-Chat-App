@@ -205,11 +205,11 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
+  
   return (
     <>
       <div className="icon-settlement">
         <IconButton d={{ base: "flex" }} icon={<PhoneIcon />} />
-        {/* <BiSolidVideo/> */}
         <IconButton d={{ base: "flex" }} icon={<BiSolidVideo />} />
         <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
       </div>
