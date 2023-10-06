@@ -1,4 +1,4 @@
-import { ViewIcon } from "@chakra-ui/icons";
+import { ViewIcon,PhoneIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -14,6 +14,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 
+import {BiSolidVideo} from "react-icons/bi";
+
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -22,7 +24,16 @@ const ProfileModal = ({ user, children }) => {
       {children ? (
         <span onClick={onOpen}>{children}</span>
       ) : (
-        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+        <div className="icon-settlement">
+          <IconButton d={{ base: "flex" }} icon={<PhoneIcon />} />
+          {/* <BiSolidVideo/> */}
+          <IconButton d={{ base: "flex" }} icon={<BiSolidVideo />} />
+          <IconButton
+            d={{ base: "flex" }}
+            icon={<ViewIcon />}
+            onClick={onOpen}
+          />
+        </div>
       )}
       <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
