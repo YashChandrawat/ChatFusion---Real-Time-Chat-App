@@ -234,14 +234,21 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             fontFamily="QuickSand"
             d="flex"
             justifyContent="center"
+            color={"white"}
           >
             {selectedChat.chatName}
           </ModalHeader>
 
           <ModalCloseButton />
-          <ModalBody d="flex" flexDir="column" alignItems="center">
+          <ModalBody
+            d="flex"
+            flexDir="column"
+            alignItems="center"
+            color={"white"}
+          >
             <FormControl d="flex">
               <Input
+                className="chat-name"
                 placeholder="Chat Name"
                 mb={3}
                 value={groupChatName}
@@ -260,6 +267,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             </FormControl>
             <FormControl>
               <Input
+                className="chat-name"
                 placeholder="Add User to group"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}

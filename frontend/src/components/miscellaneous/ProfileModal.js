@@ -58,6 +58,7 @@ const ProfileModal = ({ user, children }) => {
             fontFamily="QuickSand"
             d="flex"
             justifyContent="center"
+            color={'white'}
           >
             {user.name}
           </ModalHeader>
@@ -73,10 +74,12 @@ const ProfileModal = ({ user, children }) => {
               boxSize="150px"
               src={user.pic}
               alt={user.name}
+              objectFit={'cover'}
             />
             <Text
-              fontSize={{ base: "28px", md: "30px" }}
+              fontSize={{ base: "25px", md: "25px" }}
               fontFamily="QuickSand"
+              color={'white'}
             >
               Email: {user.email}
             </Text>

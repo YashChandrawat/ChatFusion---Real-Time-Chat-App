@@ -135,10 +135,9 @@ function SideDrawer() {
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
-        
->
+      >
         <div className="logo-container">
-          <Text fontSize="2xl" fontFamily="QuickSand" d={"flex"} >
+          <Text fontSize="2xl" fontFamily="QuickSand" d={"flex"}>
             {/* <img src={favicon} alt="favi" className="favicon" /> */}
             CHAT-FUSION
           </Text>
@@ -188,10 +187,12 @@ function SideDrawer() {
             </MenuButton>
             <MenuList>
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>{" "}
+                <MenuItem color={"white"}>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <MenuItem color={"white"} onClick={logoutHandler}>
+                Logout
+              </MenuItem>
             </MenuList>
           </Menu>
         </div>
@@ -200,10 +201,11 @@ function SideDrawer() {
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px" color = {'white'}>Search Users</DrawerHeader>
           <DrawerBody>
-            <Box d="flex" pb={2}>
+            <Box d="flex" pb={2}  color = {'white'}>
               <Input
+                className = "chat-name"
                 placeholder="Search by name or email"
                 mr={2}
                 value={search}

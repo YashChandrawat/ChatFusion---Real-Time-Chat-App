@@ -2,7 +2,13 @@ import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import "./styles.css";
-import { IconButton, Spinner, background, useToast } from "@chakra-ui/react";
+import {
+  IconButton,
+  Spinner,
+  Tooltip,
+  background,
+  useToast,
+} from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -12,7 +18,12 @@ import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 import "./SingleChat.css";
-// import {IoSend} from "react-icons/io"
+import {
+  AiOutlineSend,
+  AiOutlinePaperClip,
+  AiOutlineSmile,
+} from "react-icons/ai";
+
 
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
@@ -28,6 +39,21 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const toggleEmojiPicker = () => {
+    setShowEmojiPicker(!showEmojiPicker);
+  };
+
+  const handleEmojiSelect = (emoji) => {
+    // Handle the selected emoji (e.g., append it to the message input)
+    const updatedMessage = newMessage + emoji.native;
+    setNewMessage(updatedMessage);
+
+    // Close the emoji picker
+    setShowEmojiPicker(false);
+  };
 
   const defaultOptions = {
     loop: true,
@@ -250,15 +276,41 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Input
+              <div className="input-section">
+                <Tooltip label="Attach Emoji" hasArrow placement="bottom">
+                  <IconButton
+                    d={{ base: "flex" }}
+                    icon={<AiOutlinePaperClip />}
+                    style={{ fontSize: "20px" }}
+                  />
+                </Tooltip>
                 
-                variant="outline"
-                bg={"#D3D3D3"}
-                placeholder="Enter a message.."
-                value={newMessage}
-                onChange={typingHandler}
-                color={"black"}
-              />
+                <Tooltip label="Attach Emoji" hasArrow placement="bottom">
+                  <IconButton
+                    d={{ base: "flex" }}
+                    icon={<AiOutlineSmile />}
+                    // onClick={onOpen}
+                    style={{ fontSize: "20px" }}
+                  />
+                </Tooltip>
+                <Input
+                  variant="outline"
+                  bg={"#D3D3D3"}
+                  placeholder="Enter a message.."
+                  value={newMessage}
+                  onChange={typingHandler}
+                  color={"black"}
+                />
+
+                <Tooltip label="Send Message" hasArrow placement="bottom">
+                  <IconButton
+                    d={{ base: "flex" }}
+                    icon={<AiOutlineSend />}
+                    // onClick={onOpen}
+                    style={{ fontSize: "20px" }}
+                  />
+                </Tooltip>
+              </div>
             </FormControl>
           </Box>
         </>

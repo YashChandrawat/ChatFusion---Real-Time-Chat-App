@@ -9,3 +9,6 @@
     color: #544794;
 }
 
+.chat-name::placeholder{
+    color: white;
+}

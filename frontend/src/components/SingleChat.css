@@ -9,3 +9,10 @@
 Input::placeholder {
 	color: black;
   }
+
+  .input-section
+  {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1rem;
+  }
