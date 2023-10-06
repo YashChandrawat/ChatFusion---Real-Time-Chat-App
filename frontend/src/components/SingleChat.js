@@ -251,6 +251,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <Input
+                
                 variant="outline"
                 bg={"#D3D3D3"}
                 placeholder="Enter a message.."

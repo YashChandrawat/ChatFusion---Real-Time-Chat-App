@@ -5,3 +5,7 @@
 	height:150px; */
 	background-size: cover;
 }
+
+Input::placeholder {
+	color: black;
+  }

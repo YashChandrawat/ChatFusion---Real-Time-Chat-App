@@ -1,4 +1,4 @@
-import { ViewIcon, PhoneIcon,HamburgerIcon } from "@chakra-ui/icons";
+import { ViewIcon, PhoneIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Modal,
   ModalOverlay,
@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { BiSolidVideo } from "react-icons/bi";
+import { Tooltip } from "@chakra-ui/tooltip";
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,22 +26,28 @@ const ProfileModal = ({ user, children }) => {
         <span onClick={onOpen}>{children}</span>
       ) : (
         <div className="icon-settlement">
-          <IconButton
-            d={{ base: "flex" }}
-            icon={<PhoneIcon />}
-            style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
-          />
-          <IconButton
-            d={{ base: "flex" }}
-            icon={<BiSolidVideo />}
-            style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
-          />
-          <IconButton
-            d={{ base: "flex" }}
-            icon={<HamburgerIcon />}
-            onClick={onOpen}
-            // style={{ backgroundColor: "#5E548C"}}
-          />
+          <Tooltip label="Audio Call" hasArrow placement="bottom">
+            <IconButton
+              d={{ base: "flex" }}
+              icon={<PhoneIcon />}
+              style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+            />
+          </Tooltip>
+          <Tooltip label="Video Call" hasArrow placement="bottom">
+            <IconButton
+              d={{ base: "flex" }}
+              icon={<BiSolidVideo />}
+              style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+            />
+          </Tooltip>
+          <Tooltip label="View Profile" hasArrow placement="bottom">
+            <IconButton
+              d={{ base: "flex" }}
+              icon={<HamburgerIcon />}
+              onClick={onOpen}
+              // style={{ backgroundColor: "#5E548C"}}
+            />
+          </Tooltip>
         </div>
       )}
       <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>

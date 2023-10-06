@@ -8,6 +8,7 @@ import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
+import "./MyChats.css"
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -82,8 +83,7 @@ const MyChats = ({ fetchAgain }) => {
         d="flex"
         flexDir="column"
         p={3}
-
-        // bg="url(https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png)"
+        bg="url(https://cdn.join.chat/app/uploads/2020/05/whatsapp-bg.png)"
         w="100%"
         h="100%"
         borderRadius="lg"
@@ -95,12 +95,13 @@ const MyChats = ({ fetchAgain }) => {
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
+                bg={selectedChat === chat ? "#D3D3D3" : "#E8E8E8"}
                 color={selectedChat === chat ? "white" : "black"}
                 px={3}
                 py={2}
                 borderRadius="lg"
                 key={chat._id}
+                className="hover-effect"
               >
                 <Text>
                   {!chat.isGroupChat
