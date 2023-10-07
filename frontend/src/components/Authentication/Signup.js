@@ -137,6 +137,7 @@ const Signup = () => {
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}
           color={"white"}
+          className="chat-name"
         />
       </FormControl>
       <FormControl id="email" isRequired>
@@ -145,6 +146,7 @@ const Signup = () => {
           type="email"
           placeholder="Enter Your Email Address"
           color={"white"}
+          className="chat-name"
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormControl>
@@ -155,6 +157,7 @@ const Signup = () => {
             type={show ? "text" : "password"}
             placeholder="Enter Password"
             color={"white"}
+            className="chat-name"
             onChange={(e) => setPassword(e.target.value)}
           />
           <InputRightElement width="4.5rem" color={"white"}>
@@ -172,6 +175,8 @@ const Signup = () => {
             placeholder="Confirm password"
             color={"white"}
             onChange={(e) => setConfirmpassword(e.target.value)}
+          className = "chat-name"
+
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" color={"white"} onClick={handleClick}>
