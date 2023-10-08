@@ -277,7 +277,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <div className="input-section">
-                <Tooltip label="Attach Emoji" hasArrow placement="bottom">
+                <Tooltip label="Attach File" hasArrow placement="bottom">
                   <IconButton
                     d={{ base: "flex" }}
                     icon={<AiOutlinePaperClip />}

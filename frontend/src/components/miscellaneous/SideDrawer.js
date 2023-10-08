@@ -138,7 +138,7 @@ function SideDrawer() {
       >
         <div className="logo-container">
           <Text fontSize="2xl" fontFamily="QuickSand" d={"flex"}>
-            {/* <img src={favicon} alt="favi" className="favicon" /> */}
+            <img src={favicon} alt="favi" className="favicon" />
             CHAT-FUSION
           </Text>
         </div>

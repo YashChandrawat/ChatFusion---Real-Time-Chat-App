@@ -30,14 +30,14 @@ const ProfileModal = ({ user, children }) => {
             <IconButton
               d={{ base: "flex" }}
               icon={<PhoneIcon />}
-              style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+              style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
             />
           </Tooltip>
           <Tooltip label="Video Call" hasArrow placement="bottom">
             <IconButton
               d={{ base: "flex" }}
               icon={<BiSolidVideo />}
-              style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+              style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
             />
           </Tooltip>
           <Tooltip label="View Profile" hasArrow placement="bottom">
@@ -58,7 +58,7 @@ const ProfileModal = ({ user, children }) => {
             fontFamily="QuickSand"
             d="flex"
             justifyContent="center"
-            color={'white'}
+            color={"white"}
           >
             {user.name}
           </ModalHeader>
@@ -74,12 +74,12 @@ const ProfileModal = ({ user, children }) => {
               boxSize="150px"
               src={user.pic}
               alt={user.name}
-              objectFit={'cover'}
+              objectFit={"cover"}
             />
             <Text
               fontSize={{ base: "25px", md: "25px" }}
               fontFamily="QuickSand"
-              color={'white'}
+              color={"white"}
             >
               Email: {user.email}
             </Text>

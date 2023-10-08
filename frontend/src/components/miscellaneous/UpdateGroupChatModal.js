@@ -211,12 +211,12 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         <IconButton
           d={{ base: "flex" }}
           icon={<PhoneIcon />}
-          style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+          style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
         />
         <IconButton
           d={{ base: "flex" }}
           icon={<BiSolidVideo />}
-          style={{ backgroundColor: "#5E548C", marginRight: "6%" }}
+          style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
         />
         <IconButton
           d={{ base: "flex" }}
