@@ -1,4 +1,4 @@
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { getSender } from "../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
-import { Button } from "@chakra-ui/react";
+import { Avatar, Button, Menu, MenuButton } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
-import "./MyChats.css"
+import "./MyChats.css";
+import { MenuItem, MenuList } from "@chakra-ui/react";
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -68,16 +69,25 @@ const MyChats = ({ fetchAgain }) => {
         alignItems="center"
         borderBottom={"3px solid black"}
       >
-        My Chats
-        <GroupChatModal>
-          <Button
+        INBOX
+        <Menu isLazy>
+          <MenuButton
+            as={Button}
             d="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
           >
-            New Group Chat
-          </Button>
-        </GroupChatModal>
+            <HamburgerIcon />
+          </MenuButton>
+          <MenuList>
+            <MenuItem>
+              <GroupChatModal>
+                <Button d="flex" fontSize="17px">
+                  New Group Chat +
+                </Button>
+              </GroupChatModal>
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </Box>
       <Box
         d="flex"
@@ -103,19 +113,26 @@ const MyChats = ({ fetchAgain }) => {
                 key={chat._id}
                 className="hover-effect"
               >
-                <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
-                    : chat.chatName}
-                </Text>
-                {chat.latestMessage && (
-                  <Text fontSize="xs">
-                    <b>{chat.latestMessage.sender.name} : </b>
-                    {chat.latestMessage.content.length > 50
-                      ? chat.latestMessage.content.substring(0, 51) + "..."
-                      : chat.latestMessage.content}
-                  </Text>
-                )}
+                <div className="chats-sec">
+                  <div className="Avatar-sec">
+                    <Avatar src={user.pic} />
+                  </div>
+                  <div className="message-sec">
+                    <Text>
+                      {!chat.isGroupChat
+                        ? getSender(loggedUser, chat.users)
+                        : chat.chatName}
+                    </Text>
+                    {chat.latestMessage && (
+                      <Text fontSize="xs">
+                        <b>{chat.latestMessage.sender.name} : </b>
+                        {chat.latestMessage.content.length > 50
+                          ? chat.latestMessage.content.substring(0, 40) + "..."
+                          : chat.latestMessage.content}
+                      </Text>
+                    )}
+                  </div>
+                </div>
               </Box>
             ))}
           </Stack>
