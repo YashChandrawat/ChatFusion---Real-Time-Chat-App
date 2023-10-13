@@ -51,9 +51,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     setIsPickerOpen(false); // Close the emoji picker
   };
 
-  function insertEmoji(e)
-  {
-    setNewMessage((prevMessage) => prevMessage+e);
+  function insertEmoji(e) {
+    setNewMessage((prevMessage) => prevMessage + e);
   }
 
   const defaultOptions = {
@@ -96,6 +95,39 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         isClosable: true,
         position: "bottom",
       });
+    }
+  };
+
+  const sendMessageOnClick = () => {
+    if (newMessage) {
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
+        setNewMessage("");
+        const messageData = {
+          content: newMessage,
+          chatId: selectedChat._id,
+        };
+
+        axios.post("/api/message", messageData, config).then((response) => {
+          const { data } = response;
+          socket.emit("new message", data);
+          setMessages([...messages, data]);
+        });
+      } catch (error) {
+        toast({
+          title: "Error Occurred!",
+          description: "Failed to send the Message",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
     }
   };
 
@@ -263,6 +295,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <Picker
                   data={data}
                   previewPosition="none"
+                  onClickOutside={() => {
+                    setIsPickerOpen(!isPickerOpen);
+                  }}
                   onEmojiSelect={(e) => {
                     insertEmoji(e.native);
                     setIsPickerOpen(!isPickerOpen);
@@ -319,7 +354,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <IconButton
                     d={{ base: "flex" }}
                     icon={<AiOutlineSend />}
-                    // onClick={onOpen}
+                    onClick={sendMessageOnClick}
                     style={{ fontSize: "20px" }}
                   />
                 </Tooltip>
@@ -328,7 +363,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Box>
         </>
       ) : (
-        // to get socket.io on same page
         <Box
           d="flex"
           alignItems="center"
