@@ -23,6 +23,8 @@ import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
 import "./UpdateGroupChatModel.css";
 import { BiSolidVideo } from "react-icons/bi";
+import { useColorModeContext } from "../ColorModeContext";
+
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -205,6 +207,9 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     setGroupChatName("");
   };
 
+  const { colorMode } = useColorModeContext();
+  const textColor = colorMode === "light" ? "black" : "white";
+
   return (
     <>
       <div className="icon-settlement">
@@ -234,7 +239,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             fontFamily="QuickSand"
             d="flex"
             justifyContent="center"
-            color={"white"}
+            color={textColor}
           >
             {selectedChat.chatName}
           </ModalHeader>
@@ -244,7 +249,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             d="flex"
             flexDir="column"
             alignItems="center"
-            color={"white"}
+            color={textColor}
           >
             <FormControl d="flex">
               <Input

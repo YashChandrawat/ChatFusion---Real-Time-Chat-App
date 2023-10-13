@@ -16,9 +16,18 @@ import {
 
 import { BiSolidVideo } from "react-icons/bi";
 import { Tooltip } from "@chakra-ui/tooltip";
+import { useColorModeContext } from "../ColorModeContext";
+import { useHistory } from "react-router-dom";
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { colorMode } = useColorModeContext();
+  const textColor = colorMode === "light" ? "black" : "white";
+  const history = useHistory();
+  function temp() {
+    history.push("/chats/call");
+  }
 
   return (
     <>
@@ -37,6 +46,7 @@ const ProfileModal = ({ user, children }) => {
             <IconButton
               d={{ base: "flex" }}
               icon={<BiSolidVideo />}
+              onClick={temp}
               style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
             />
           </Tooltip>
@@ -58,7 +68,7 @@ const ProfileModal = ({ user, children }) => {
             fontFamily="QuickSand"
             d="flex"
             justifyContent="center"
-            color={"white"}
+            color={textColor}
           >
             {user.name}
           </ModalHeader>
@@ -79,7 +89,7 @@ const ProfileModal = ({ user, children }) => {
             <Text
               fontSize={{ base: "25px", md: "25px" }}
               fontFamily="QuickSand"
-              color={"white"}
+              color={textColor}
             >
               Email: {user.email}
             </Text>

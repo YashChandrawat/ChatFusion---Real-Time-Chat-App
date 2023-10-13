@@ -21,7 +21,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 
-
 // --------------------------deployment------------------------------
 
 // Error Handling middlewares

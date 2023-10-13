@@ -34,6 +34,10 @@ import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 import "./SideDrawer.css";
+import { useColorMode } from "@chakra-ui/react";
+import { MdDarkMode } from "react-icons/md";
+import { FaMoon } from "react-icons/fa";
+import { BsFillSunFill } from "react-icons/bs";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -125,6 +129,10 @@ function SideDrawer() {
     }
   };
 
+  const { colorMode, toggleColorMode } = useColorMode();
+  function handleToggleColorMode() {
+    toggleColorMode();
+  }
   return (
     <>
       <Box
@@ -176,6 +184,9 @@ function SideDrawer() {
               ))}
             </MenuList>
           </Menu>
+          <Button onClick={handleToggleColorMode} mr={2}>
+            {colorMode === "light" ? <FaMoon /> : <BsFillSunFill />}
+          </Button>
           <Menu>
             <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
               <Avatar
@@ -187,10 +198,15 @@ function SideDrawer() {
             </MenuButton>
             <MenuList>
               <ProfileModal user={user}>
-                <MenuItem color={"white"}>My Profile</MenuItem>{" "}
+                <MenuItem color={colorMode === "light" ? "black" : "white"}>
+                  My Profile
+                </MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              <MenuItem color={"white"} onClick={logoutHandler}>
+              <MenuItem
+                color={colorMode === "light" ? "black" : "white"}
+                onClick={logoutHandler}
+              >
                 Logout
               </MenuItem>
             </MenuList>
@@ -201,11 +217,13 @@ function SideDrawer() {
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px" color = {'white'}>Search Users</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px" color={"white"}>
+            Search Users
+          </DrawerHeader>
           <DrawerBody>
-            <Box d="flex" pb={2}  color = {'white'}>
+            <Box d="flex" pb={2} color={"white"}>
               <Input
-                className = "chat-name"
+                className="chat-name"
                 placeholder="Search by name or email"
                 mr={2}
                 value={search}
@@ -231,5 +249,6 @@ function SideDrawer() {
     </>
   );
 }
+
 
 export default SideDrawer;

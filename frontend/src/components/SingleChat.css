@@ -1,18 +1,27 @@
-.logo-single-chat{
-    max-height: 100%;
-	max-width: 100%;
-	/* width:150px;
+.logo-single-chat {
+  max-height: 100%;
+  max-width: 100%;
+  /* width:150px;
 	height:150px; */
-	background-size: cover;
+  background-size: cover;
 }
 
 Input::placeholder {
-	color: black;
-  }
+  color: black;
+}
 
-  .input-section
-  {
-	display: flex;
-	justify-content: space-between;
-	font-size: 1rem;
-  }
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.block-class {
+  display: block;
+  position: absolute;
+  bottom: 12%;
+}
+
+.none-class {
+  display: none;
+}

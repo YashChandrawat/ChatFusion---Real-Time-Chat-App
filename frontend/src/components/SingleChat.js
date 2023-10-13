@@ -1,6 +1,9 @@
 import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+
 import "./styles.css";
 import {
   IconButton,
@@ -24,7 +27,6 @@ import {
   AiOutlineSmile,
 } from "react-icons/ai";
 
-
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -40,20 +42,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
 
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-
-  const toggleEmojiPicker = () => {
-    setShowEmojiPicker(!showEmojiPicker);
-  };
-
+  // Emoji Picker
+  const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const [addEmoji, setAddEmoji] = useState("");
   const handleEmojiSelect = (emoji) => {
-    // Handle the selected emoji (e.g., append it to the message input)
-    const updatedMessage = newMessage + emoji.native;
-    setNewMessage(updatedMessage);
-
-    // Close the emoji picker
-    setShowEmojiPicker(false);
+    // Append the selected emoji to the current message
+    setNewMessage((prevMessage) => prevMessage + emoji.native);
+    setIsPickerOpen(false); // Close the emoji picker
   };
+
+  function insertEmoji(e)
+  {
+    setNewMessage((prevMessage) => prevMessage+e);
+  }
 
   const defaultOptions = {
     loop: true,
@@ -257,7 +258,18 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <ScrollableChat messages={messages} />
               </div>
             )}
-
+            {isPickerOpen && (
+              <div className={isPickerOpen ? "block-class" : "none-class"}>
+                <Picker
+                  data={data}
+                  previewPosition="none"
+                  onEmojiSelect={(e) => {
+                    insertEmoji(e.native);
+                    setIsPickerOpen(!isPickerOpen);
+                  }}
+                />
+              </div>
+            )}
             <FormControl
               onKeyDown={sendMessage}
               id="first-name"
@@ -284,15 +296,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     style={{ fontSize: "20px" }}
                   />
                 </Tooltip>
-                
+
                 <Tooltip label="Attach Emoji" hasArrow placement="bottom">
                   <IconButton
                     d={{ base: "flex" }}
                     icon={<AiOutlineSmile />}
-                    // onClick={onOpen}
+                    onClick={() => setIsPickerOpen(!isPickerOpen)}
                     style={{ fontSize: "20px" }}
                   />
                 </Tooltip>
+
                 <Input
                   variant="outline"
                   bg={"#D3D3D3"}
