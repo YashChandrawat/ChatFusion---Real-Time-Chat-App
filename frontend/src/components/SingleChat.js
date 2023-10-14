@@ -341,7 +341,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <IconButton
                     d={{ base: "flex" }}
                     icon={<AiOutlinePaperClip />}
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "20px", marginRight: "1%" }}
                   />
                 </Tooltip>
 
@@ -350,7 +350,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     d={{ base: "flex" }}
                     icon={<AiOutlineSmile />}
                     onClick={() => setIsPickerOpen(!isPickerOpen)}
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "20px", marginRight: "1%" }}
                   />
                 </Tooltip>
 
@@ -368,7 +368,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     d={{ base: "flex" }}
                     icon={<AiOutlineSend />}
                     onClick={sendMessageOnClick}
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "20px", marginLeft: "1%" }}
                   />
                 </Tooltip>
               </div>
