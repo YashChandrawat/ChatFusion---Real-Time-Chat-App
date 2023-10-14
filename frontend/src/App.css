@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
 * {
-  color: black;
+  color: white;
 }
 
 .App {
@@ -44,8 +46,6 @@
 ::-webkit-scrollbar {
   width: 0px;
 }
-
-
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {

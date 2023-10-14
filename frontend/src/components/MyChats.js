@@ -57,17 +57,18 @@ const MyChats = ({ fetchAgain }) => {
       w={{ base: "100%", md: "31%" }}
       borderRadius="lg"
       borderWidth="1px"
+      style={{background : "transparent"}}
     >
       <Box
         pb={3}
         px={3}
         fontSize={{ base: "28px", md: "30px" }}
-        fontFamily="QuickSand"
+        fontFamily="Montserrat"
         d="flex"
         w="100%"
         justifyContent="space-between"
         alignItems="center"
-        borderBottom={"3px solid black"}
+        borderBottom={"2px solid white"}
       >
         INBOX
         <Menu isLazy>
@@ -105,13 +106,14 @@ const MyChats = ({ fetchAgain }) => {
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#D3D3D3" : "#E8E8E8"}
+                // bg={selectedChat === chat ? "#D3D3D3" : "#E8E8E8"}
                 color={selectedChat === chat ? "white" : "black"}
                 px={3}
                 py={2}
                 borderRadius="lg"
                 key={chat._id}
                 className="hover-effect"
+                style={{borderBottom : "1px solid gray"}}
               >
                 <div className="chats-sec">
                   <div className="Avatar-sec">

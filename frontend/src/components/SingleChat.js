@@ -243,7 +243,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
-            borderBottom={"3px solid black"}
+            borderBottom={"2px solid white"}
           >
             <IconButton
               d={{ base: "flex", md: "none" }}
@@ -385,9 +385,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         >
           <Text
             className="chat-fusion-text"
-            fontSize="3xl"
+            fontSize="5xl"
             pb={3}
-            fontFamily="QuickSand"
+            fontFamily="Montserrat"
           >
             <span>C</span>
             <span>H</span>
@@ -403,7 +403,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Text>
 
           <div className="created-by">
-            <Text>
+            <Text fontSize="xl">
               Created by Yash Chandrawat, Vedika Patidar, Vishal Makwana
             </Text>
           </div>

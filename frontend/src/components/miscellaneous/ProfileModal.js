@@ -65,7 +65,7 @@ const ProfileModal = ({ user, children }) => {
         <ModalContent h="410px">
           <ModalHeader
             fontSize="40px"
-            fontFamily="QuickSand"
+            fontFamily="Montserrat"
             d="flex"
             justifyContent="center"
             color={textColor}
@@ -88,7 +88,7 @@ const ProfileModal = ({ user, children }) => {
             />
             <Text
               fontSize={{ base: "25px", md: "25px" }}
-              fontFamily="QuickSand"
+              fontFamily="Montserrat"
               color={textColor}
             >
               Email: {user.email}

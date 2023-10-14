@@ -31,6 +31,10 @@ Input::placeholder {
 }
 
 /* Animation */
+.chat-fusion-text{
+  line-height: 1;
+}
+
 .chat-fusion-text span {
   display: inline-block;
   opacity: 0;

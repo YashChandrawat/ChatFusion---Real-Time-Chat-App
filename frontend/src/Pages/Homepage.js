@@ -37,7 +37,7 @@ function Homepage() {
           maxW={"xl"}
           maxH={"100vh"}
           centerContent
-          fontFamily={"QuickSand"}
+          fontFamily={"Montserrat"}
           p={"10"}
           display={"flex"}
           flexDirection={"column"}

@@ -143,9 +143,12 @@ function SideDrawer() {
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
+        style={{
+          background : "transparent"
+        }}
       >
         <div className="logo-container">
-          <Text fontSize="2xl" fontFamily="QuickSand" d={"flex"}>
+          <Text fontSize="2xl" fontFamily="Montserrat" d={"flex"}>
             <img src={favicon} alt="favi" className="favicon" />
             CHAT-FUSION
           </Text>
@@ -187,8 +190,8 @@ function SideDrawer() {
           <Button onClick={handleToggleColorMode} mr={2}>
             {colorMode === "light" ? <FaMoon /> : <BsFillSunFill />}
           </Button>
-          <Menu>
-            <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
+          <Menu >
+            <MenuButton as={Button} bg="transparent" rightIcon={<ChevronDownIcon />}>
               <Avatar
                 size="sm"
                 cursor="pointer"
