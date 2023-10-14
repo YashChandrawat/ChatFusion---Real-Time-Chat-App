@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .logo-single-chat {
   max-height: 100%;
   max-width: 100%;
@@ -6,10 +12,13 @@
   background-size: cover;
 }
 
-Input::placeholder {
+.light-mode::placeholder {
   color: black;
 }
 
+.dark-mode::placeholder {
+  color: white;
+}
 .input-section {
   display: flex;
   justify-content: space-between;
@@ -32,7 +41,7 @@ Input::placeholder {
 }
 
 /* Animation */
-.chat-fusion-text{
+.chat-fusion-text {
   line-height: 1;
 }
 
@@ -114,4 +123,12 @@ Input::placeholder {
   to {
     opacity: 1;
   }
+}
+
+.light-mode {
+  background: #273443;
+}
+
+.dark-mode {
+  background: #273443;
 }

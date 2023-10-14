@@ -13,3 +13,11 @@
     /* background-color: black; */
   }
   
+
+  .chat-name1::placeholder{
+    color: black;
+  }
+
+  .chat-name2::placeholder{
+    color: white;
+  }

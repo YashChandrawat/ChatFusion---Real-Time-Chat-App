@@ -18,8 +18,11 @@ import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
+import { useColorMode } from "@chakra-ui/react";
+
 
 const GroupChatModal = ({ children }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -143,6 +146,7 @@ const GroupChatModal = ({ children }) => {
             fontFamily="Montserrat"
             d="flex"
             justifyContent="center"
+            color={colorMode === "light" ? "black" : "white"}
           >
             Create Group Chat
           </ModalHeader>
@@ -153,6 +157,7 @@ const GroupChatModal = ({ children }) => {
                 placeholder="Chat Name"
                 mb={3}
                 onChange={(e) => setGroupChatName(e.target.value)}
+                className = {colorMode === "light" ? "chat-name1" : "chat-name2"}
               />
             </FormControl>
             <FormControl>
@@ -160,6 +165,7 @@ const GroupChatModal = ({ children }) => {
                 placeholder="Add Users eg: Vishal, Yash, Vedika"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
+                className = {colorMode === "light" ? "chat-name1" : "chat-name2"}
               />
             </FormControl>
             <Box w="100%" d="flex" flexWrap="wrap">

@@ -1,18 +1,21 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
 import { ChatState } from "../../Context/ChatProvider";
+import { useColorMode } from "@chakra-ui/react";
 
 const UserListItem = ({ handleFunction }) => {
   const { user } = ChatState();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Box
       onClick={handleFunction}
       cursor="pointer"
-      bg="#E8E8E8"
+      border={"1px solid gray"}
+      // bg="transparent"
+      background={colorMode === "light" ? "#dbdbdb" : "#273443"}
       _hover={{
-        background: "#38B2AC",
-        color: "white",
+        border: "1px solid white",
       }}
       w="100%"
       d="flex"
@@ -31,9 +34,13 @@ const UserListItem = ({ handleFunction }) => {
         src={user.pic}
       />
       <Box>
-        <Text>{user.name}</Text>
-        <Text fontSize="xs">
-          <b>Email : </b>
+        <Text color={colorMode === "light" ? "black" : "white"}>
+          {user.name}
+        </Text>
+        <Text fontSize="xs" color={colorMode === "light" ? "black" : "white"}>
+          <b style={{ color: colorMode === "light" ? "black" : "white" }}>
+            Email :{" "}
+          </b>
           {user.email}
         </Text>
       </Box>

@@ -27,6 +27,7 @@ import {
   AiOutlinePaperClip,
   AiOutlineSmile,
 } from "react-icons/ai";
+import { useColorMode } from "@chakra-ui/react";
 
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
@@ -42,6 +43,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   // Emoji Picker
   const [isPickerOpen, setIsPickerOpen] = useState(false);
@@ -243,12 +245,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
-            borderBottom={"2px solid white"}
+            borderBottom={colorMode === "light" ? "2px solid black" : "2px solid white"}
+            color={colorMode === "light" ? "black" : "white"} // Adjust the text color
           >
             <IconButton
               d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
+              background={colorMode === "light" ? "#4f4587" : "#273443"}
             />
 
             {messages &&
@@ -280,7 +284,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             justifyContent="flex-end"
             p={3}
             style={{
-              // backgroundColor : '#d4f3ef',
+              backgroundColor: "pink",
               backgroundSize: "cover",
               background:
                 "url(https://cdn.join.chat/app/uploads/2020/05/whatsapp-bg.png)",
@@ -323,6 +327,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               id="first-name"
               isRequired
               mt={3}
+              // bg={colorMode === "light" ? "white" : "#273443"}
             >
               {istyping ? (
                 <div>
@@ -341,7 +346,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <IconButton
                     d={{ base: "flex" }}
                     icon={<AiOutlinePaperClip />}
-                    style={{ fontSize: "20px", marginRight: "1%" }}
+                    style={{
+                      marginRight: "1%",
+                      color: colorMode === "light" ? "black" : "white",
+                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                    }}
                   />
                 </Tooltip>
 
@@ -350,25 +359,36 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     d={{ base: "flex" }}
                     icon={<AiOutlineSmile />}
                     onClick={() => setIsPickerOpen(!isPickerOpen)}
-                    style={{ fontSize: "20px", marginRight: "1%" }}
+                    style={{
+                      marginRight: "1%",
+                      color: colorMode === "light" ? "black" : "white",
+                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                    }}
                   />
                 </Tooltip>
 
                 <Input
                   variant="outline"
-                  bg={"#D3D3D3"}
+                  bg={colorMode === "light" ? "white" : "#273443"}
                   placeholder="Enter a message.."
                   value={newMessage}
                   onChange={typingHandler}
-                  color={"black"}
+                  color={colorMode === "light" ? "black" : "white"}
+                  className={colorMode === "light" ? "light-mode" : "dark-mode"}
                 />
 
                 <Tooltip label="Send Message" hasArrow placement="bottom">
                   <IconButton
+                    variant="outline"
                     d={{ base: "flex" }}
                     icon={<AiOutlineSend />}
                     onClick={sendMessageOnClick}
-                    style={{ fontSize: "20px", marginLeft: "1%" }}
+                    style={{
+                      marginLeft: "1%",
+                      color: colorMode === "light" ? "black" : "white",
+                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                    }}
+                    color={colorMode === "light" ? "black" : "black"}
                   />
                 </Tooltip>
               </div>
@@ -388,6 +408,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             fontSize="5xl"
             pb={3}
             fontFamily="Montserrat"
+            color={colorMode === "light" ? "white" : "black"}
+            textShadow={colorMode === "light" ? "1px 1px 2px #000" : "1px 1px 3px #fff"}
           >
             <span>C</span>
             <span>H</span>
@@ -403,7 +425,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Text>
 
           <div className="created-by">
-            <Text fontSize="xl">
+            <Text
+              fontSize="xl"
+              color={colorMode === "light" ? "black" : "white"}
+              textShadow={colorMode === "light" ? "1px 1px 2px #000" : "1px 1px 2px #fff"}
+            >
               Created by Yash Chandrawat, Vedika Patidar, Vishal Makwana
             </Text>
           </div>

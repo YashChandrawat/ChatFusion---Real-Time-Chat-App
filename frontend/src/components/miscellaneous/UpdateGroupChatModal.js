@@ -25,7 +25,6 @@ import "./UpdateGroupChatModel.css";
 import { BiSolidVideo } from "react-icons/bi";
 import { useColorModeContext } from "../ColorModeContext";
 
-
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
@@ -216,18 +215,30 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         <IconButton
           d={{ base: "flex" }}
           icon={<PhoneIcon />}
-          style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
+          style={{
+            backgroundColor: "#273443",
+            marginRight: "6%",
+            color: "white",
+          }}
         />
         <IconButton
           d={{ base: "flex" }}
           icon={<BiSolidVideo />}
-          style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
+          style={{
+            backgroundColor: "#273443",
+            marginRight: "6%",
+            color: "white",
+          }}
         />
         <IconButton
           d={{ base: "flex" }}
           icon={<HamburgerIcon />}
           onClick={onOpen}
-          // style={{ backgroundColor: "#5E548C"}}
+          style={{
+            backgroundColor: "#273443",
+            marginRight: "6%",
+            color: "white",
+          }}
         />
       </div>
 
@@ -239,7 +250,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             fontFamily="Montserrat"
             d="flex"
             justifyContent="center"
-            color={textColor}
+            color={"whitesmoke"}
           >
             {selectedChat.chatName}
           </ModalHeader>

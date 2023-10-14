@@ -3,6 +3,8 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import favicon from "./favicon.png";
+import FaviconLight from "./FaviconLightMode.png";
+
 import {
   Menu,
   MenuButton,
@@ -44,6 +46,7 @@ function SideDrawer() {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const {
     setSelectedChat,
@@ -129,7 +132,6 @@ function SideDrawer() {
     }
   };
 
-  const { colorMode, toggleColorMode } = useColorMode();
   function handleToggleColorMode() {
     toggleColorMode();
   }
@@ -144,20 +146,37 @@ function SideDrawer() {
         p="5px 10px 5px 10px"
         borderWidth="5px"
         style={{
-          background : "transparent"
+          background: "transparent",
         }}
       >
         <div className="logo-container">
-          <Text fontSize="2xl" fontFamily="Montserrat" d={"flex"}>
-            <img src={favicon} alt="favi" className="favicon" />
+          <Text
+            fontSize="2xl"
+            fontFamily="Montserrat"
+            d={"flex"}
+            color={colorMode === "light" ? "black" : "white"}
+          >
+            <img
+              src={colorMode === "light" ? FaviconLight : favicon}
+              alt="favi"
+              className="favicon"
+            />
             CHAT-FUSION
           </Text>
         </div>
         <div>
           <Tooltip label="Search Users to chat" hasArrow placement="right">
-            <Button variant="ghost" onClick={onOpen}>
-              <i className="fas fa-search"></i>
-              <Text d={{ base: "none", md: "flex" }} px={4}>
+            <Button
+              variant="ghost"
+              onClick={onOpen}
+              color={colorMode === "light" ? "black" : "white"}
+            >
+              <i className="fas fa-search" color="black"></i>
+              <Text
+                d={{ base: "none", md: "flex" }}
+                px={4}
+                color={colorMode === "light" ? "black" : "white"}
+              >
                 Search User
               </Text>
             </Button>
@@ -168,13 +187,18 @@ function SideDrawer() {
                 count={notification.length}
                 effect={Effect.SCALE}
               />
-              <BellIcon fontSize="2xl" m={1} />
+
+              <BellIcon
+                fontSize="2xl"
+                m={1}
+              />
             </MenuButton>
-            <MenuList pl={2}>
+            <MenuList pl={2} color={colorMode === "light" ? "black" : "white"}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
                 <MenuItem
                   key={notif._id}
+                  color={colorMode === "light" ? "black" : "white"}
                   onClick={() => {
                     setSelectedChat(notif.chat);
                     setNotification(notification.filter((n) => n !== notif));
@@ -187,11 +211,19 @@ function SideDrawer() {
               ))}
             </MenuList>
           </Menu>
-          <Button onClick={handleToggleColorMode} mr={2}>
+          <Button
+            onClick={handleToggleColorMode}
+            mr={2}
+            style={{ background: colorMode === "light" ? "#d3d3d3" : "none" }}
+          >
             {colorMode === "light" ? <FaMoon /> : <BsFillSunFill />}
           </Button>
-          <Menu >
-            <MenuButton as={Button} bg="transparent" rightIcon={<ChevronDownIcon />}>
+          <Menu>
+            <MenuButton
+              as={Button}
+              // bg="#d3d3d3"
+              rightIcon={<ChevronDownIcon />}
+            >
               <Avatar
                 size="sm"
                 cursor="pointer"
@@ -220,19 +252,28 @@ function SideDrawer() {
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px" color={"white"}>
+          <DrawerHeader
+            borderBottomWidth="1px"
+            color={colorMode === "light" ? "black" : "white"}
+          >
             Search Users
           </DrawerHeader>
           <DrawerBody>
             <Box d="flex" pb={2} color={"white"}>
               <Input
-                className="chat-name"
+                className={colorMode === "light" ? "chat-name1" : "chat-name2"}
                 placeholder="Search by name or email"
                 mr={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                color={colorMode === "light" ? "black" : "white"}
               />
-              <Button onClick={handleSearch}>Go</Button>
+              <Button
+                onClick={handleSearch}
+                color={colorMode === "light" ? "black" : "white"}
+              >
+                Go
+              </Button>
             </Box>
             {loading ? (
               <ChatLoading />
@@ -252,6 +293,5 @@ function SideDrawer() {
     </>
   );
 }
-
 
 export default SideDrawer;

@@ -2,11 +2,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
-* {
+.App3 {
   color: white;
 }
 
 .App {
+  color: black;
   min-height: 100vh;
   min-width: 100vw;
   display: flex;

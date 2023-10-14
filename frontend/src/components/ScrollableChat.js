@@ -8,9 +8,11 @@ import {
   isSameUser,
 } from "../config/ChatLogics";
 import { ChatState } from "../Context/ChatProvider";
+import { useColorMode } from "@chakra-ui/react";
 
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <div>
@@ -39,9 +41,9 @@ const ScrollableChat = ({ messages }) => {
               )}
               <span
                 style={{
-                  color: `${m.sender._id === user._id ? "black" : "white"}`,
+                  color: `${colorMode === "light" ? `${m.sender._id === user._id ? "black" : "white"}` : `${m.sender._id === user._id ? "white" : "white"}`}`,
                   backgroundColor: `${
-                    m.sender._id === user._id ? "#D3D3D3" : "#433491"
+                    colorMode === "light" ? `${m.sender._id === user._id ? "#d3d3d3" : "#473e73"}` : `${m.sender._id === user._id ? "#273443" : "#128C7E"}`
                   }`,
                   marginLeft: isSameSenderMargin(messages, m, i, user._id),
                   marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10,

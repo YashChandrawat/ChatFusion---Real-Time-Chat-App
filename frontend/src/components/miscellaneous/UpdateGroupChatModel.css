@@ -5,10 +5,9 @@
     /* width: 15%; */
     display: flex;
     justify-content: space-between;
-    margin-right: 1%;
     color: #544794;
 }
 
 .chat-name::placeholder{
-    color: black;
+    color: white;
 }

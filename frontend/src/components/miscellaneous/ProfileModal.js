@@ -13,6 +13,8 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
+import "./ProfileModel.css";
 
 import { BiSolidVideo } from "react-icons/bi";
 import { Tooltip } from "@chakra-ui/tooltip";
@@ -22,8 +24,8 @@ import { useHistory } from "react-router-dom";
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { colorMode } = useColorModeContext();
-  const textColor = colorMode === "light" ? "black" : "white";
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const history = useHistory();
   function temp() {
     history.push("/chats/call");
@@ -39,7 +41,11 @@ const ProfileModal = ({ user, children }) => {
             <IconButton
               d={{ base: "flex" }}
               icon={<PhoneIcon />}
-              style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
+              style={{
+                backgroundColor: "#273443",
+                marginRight: "6%",
+                color: colorMode === "light" ? "white" : "white",
+              }}
             />
           </Tooltip>
           <Tooltip label="Video Call" hasArrow placement="bottom">
@@ -47,7 +53,13 @@ const ProfileModal = ({ user, children }) => {
               d={{ base: "flex" }}
               icon={<BiSolidVideo />}
               onClick={temp}
-              style={{ backgroundColor: "#8b85a1", marginRight: "6%" }}
+              style={{
+                backgroundColor: "#273443",
+                marginRight: "6%",
+                color: colorMode === "light" ? "white" : "white",
+
+                // background: colorMode === "light" ? "#4f4587" : "#273443",
+              }}
             />
           </Tooltip>
           <Tooltip label="View Profile" hasArrow placement="bottom">
@@ -55,7 +67,11 @@ const ProfileModal = ({ user, children }) => {
               d={{ base: "flex" }}
               icon={<HamburgerIcon />}
               onClick={onOpen}
-              // style={{ backgroundColor: "#5E548C"}}
+              style={{
+                backgroundColor: "#273443",
+                marginRight: "6%",
+                color: colorMode === "light" ? "white" : "white",
+              }}
             />
           </Tooltip>
         </div>
@@ -68,7 +84,6 @@ const ProfileModal = ({ user, children }) => {
             fontFamily="Montserrat"
             d="flex"
             justifyContent="center"
-            color={textColor}
           >
             {user.name}
           </ModalHeader>
@@ -89,7 +104,6 @@ const ProfileModal = ({ user, children }) => {
             <Text
               fontSize={{ base: "25px", md: "25px" }}
               fontFamily="Montserrat"
-              color={textColor}
             >
               Email: {user.email}
             </Text>
