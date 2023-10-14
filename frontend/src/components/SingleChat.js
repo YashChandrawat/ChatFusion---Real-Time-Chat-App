@@ -3,6 +3,7 @@ import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import Picker from "@emoji-mart/react";
 import data from "@emoji-mart/data";
+import { Avatar } from "@chakra-ui/react";
 
 import "./styles.css";
 import {
@@ -219,6 +220,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   // Activity Track
+  useEffect(() => {
+    // Trigger the typing animation after the component has rendered
+    const typingElements = document.querySelectorAll(".typing-text");
+    typingElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("typing-active");
+      }, index * 1000); // Adjust the delay as needed
+    });
+  }, []);
 
   return (
     <>
@@ -229,7 +239,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             pb={3}
             px={2}
             w="100%"
-            fontFamily="QuickSand"
+            fontFamily="Montserrat"
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
@@ -246,9 +256,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <>
                   {}
                   {getSender(user, selectedChat.users)}
-                  <ProfileModal
-                    user={getSenderFull(user, selectedChat.users)}
-                  />
+                  <div className="avatar-side">
+                    <ProfileModal
+                      user={getSenderFull(user, selectedChat.users)}
+                    />
+                  </div>
                 </>
               ) : (
                 <>
@@ -371,10 +383,30 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           h="100%"
           flexDirection={"column"}
         >
-          <Text fontSize="3xl" pb={3} fontFamily="QuickSand">
-            Click on a user to start exploring Chat-Fusion
+          <Text
+            className="chat-fusion-text"
+            fontSize="3xl"
+            pb={3}
+            fontFamily="QuickSand"
+          >
+            <span>C</span>
+            <span>H</span>
+            <span>A</span>
+            <span>T</span>
+            <span>-</span>
+            <span>F</span>
+            <span>U</span>
+            <span>S</span>
+            <span>I</span>
+            <span>O</span>
+            <span>N</span>
           </Text>
-          <Text>Created with ❤️ by Yash Chandrawat</Text>
+
+          <div className="created-by">
+            <Text>
+              Created by Yash Chandrawat, Vedika Patidar, Vishal Makwana
+            </Text>
+          </div>
         </Box>
       )}
     </>
