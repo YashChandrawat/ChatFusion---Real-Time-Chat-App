@@ -1,0 +1,128 @@
+/* Key Features Section Styles */
+
+.main-about {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.left-part-about {
+  width: 50%;
+  margin-right: 5%;
+  text-align: start;
+  line-height: 2;
+}
+
+.right-part-about {
+  width: 30%;
+}
+
+.right-part-about img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.text-xl {
+  text-align: justify;
+}
+
+.middle-section {
+  text-align: center;
+  padding: 20px;
+  background-color: transparent;
+}
+
+.text-3xl2 {
+  margin-inline: auto;
+  font-weight: 900;
+  font-size: 2rem;
+  width: 70%;
+  text-align: start;
+}
+
+.features-sec {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+  margin-inline: auto;
+  margin-top: 2%;
+  gap: 20px; /* Add some spacing between features */
+}
+
+.features-sec > div {
+  width: calc(15% - 20px);
+  margin: 10px;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.features-sec > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  background-color: #0091ea;
+  color: #fff;
+}
+
+.features-sec p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.features-sec svg {
+  font-size: 2.5rem;
+}
+
+/* Additional CSS to align the unordered list box with "Key Features" and "About Us" */
+.ul-list {
+  line-height: 2;
+  text-align: left;
+  padding: 0;
+  list-style-type: none;
+  width: 70%;
+  text-align: left;
+  padding: 20px; /* Add some padding for separation */
+}
+
+/* Center the unordered list on smaller screens (responsive design) */
+@media (max-width: 768px) {
+  .ul-list {
+    text-align: center;
+  }
+}
+
+/* Tab Styles */
+
+.upper-section {
+  text-align: center;
+  background-color: transparent;
+  padding: 30px 0;
+}
+
+.text-3xl {
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.feature-single {
+  width: 20%;
+}
+
+/* Additional Media Query for Tablet Layout */
+
+@media (max-width: 768px) {
+  .features-sec > div {
+    width: calc(50% - 20px);
+  }
+}

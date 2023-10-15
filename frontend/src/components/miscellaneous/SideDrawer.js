@@ -4,6 +4,7 @@ import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import favicon from "./favicon.png";
 import FaviconLight from "./FaviconLightMode.png";
+import { Link } from "react-router-dom";
 
 import {
   Menu,
@@ -188,10 +189,7 @@ function SideDrawer() {
                 effect={Effect.SCALE}
               />
 
-              <BellIcon
-                fontSize="2xl"
-                m={1}
-              />
+              <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
             <MenuList pl={2} color={colorMode === "light" ? "black" : "white"}>
               {!notification.length && "No New Messages"}
@@ -238,6 +236,14 @@ function SideDrawer() {
                 </MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
+              <Link to="/about">
+                <MenuItem color={colorMode === "light" ? "black" : "white"}>
+                  About
+                </MenuItem>
+              </Link>
+
+              <MenuDivider />
+
               <MenuItem
                 color={colorMode === "light" ? "black" : "white"}
                 onClick={logoutHandler}
