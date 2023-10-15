@@ -59,7 +59,7 @@ function About() {
             <div className="right-part-about">
               <img
                 src={
-                  "https://i.pinimg.com/originals/50/78/a0/5078a05eb1b6847d93383eaa4c0ed500.gif"
+                  "https://www.stellardigital.in/public/images/63be8ead1fcd0.gif"
                 }
                 alt=""
               />
@@ -111,7 +111,7 @@ function About() {
           </div>
         </div>
       </Stack>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

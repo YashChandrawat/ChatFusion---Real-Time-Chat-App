@@ -409,7 +409,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             pb={3}
             fontFamily="Montserrat"
             color={colorMode === "light" ? "white" : "black"}
-            textShadow={colorMode === "light" ? "1px 1px 2px #000" : "1px 1px 3px #fff"}
+            textShadow={colorMode === "light" ? "1px 1px 5px #000" : "1px 1px 3px #fff"}
           >
             <span>C</span>
             <span>H</span>
