@@ -13,6 +13,14 @@
     /* background-color: black; */
   }
   
+  .favicon1 {
+    width: 40px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Add spacing between the logo and text */
+    display: none;
+    /* background-color: black; */
+  }
+  
 
   .chat-name1::placeholder{
     color: black;
@@ -20,4 +28,15 @@
 
   .chat-name2::placeholder{
     color: white;
+  }
+
+  @media only screen and (max-width : 480px)
+  {
+      .logo-container{
+        display: none;
+      }
+
+      .favicon1{
+        display: block;
+      }
   }

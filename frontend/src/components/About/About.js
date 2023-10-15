@@ -40,6 +40,9 @@ function About() {
       <SideDrawer
         className="sidedrawer-about"
         style={{ fontFamily: "Montserrat" }}
+        buttonProp = "false"
+        display = "none"
+        displayHome = "block"
       />
       <Stack spacing={3}>
         <div className="upper-section">
@@ -76,29 +79,29 @@ function About() {
             style={{ margin: "0 auto" }}
           >
             <ListItem className="li-list">
-              Instant Messaging: Chat with friends and family in real-time, no
-              matter where they are in the world.
+              <b>Instant Messaging :</b> Chat with friends and family in
+              real-time, no matter where they are in the world.
             </ListItem>
             <ListItem>
-              User Search: Easily find and connect with new users by searching
-              for their names or emails.
+              <b>User Search :</b> Easily find and connect with new users by
+              searching for their names or emails.
             </ListItem>
             <ListItem>
-              Group Chats: Create and join group chats to engage in
+              <b>Group Chats :</b> Create and join group chats to engage in
               conversations with multiple people at once.
             </ListItem>
             <ListItem>
-              Dark Mode: Customize your chat experience with a sleek dark mode
-              for a comfortable viewing experience, especially in low-light
-              settings.
+              <b>Dark Mode :</b> Customize your chat experience with a sleek
+              dark mode for a comfortable viewing experience, especially in
+              low-light settings.
             </ListItem>
             <ListItem>
-              Notification System: Stay informed with a notification system that
-              alerts you to new messages and updates.
+              <b>Notification System :</b> Stay informed with a notification
+              system that alerts you to new messages and updates.
             </ListItem>
             <ListItem>
-              User Profiles: Personalize your profile with a name, profile
-              picture, and more.
+              <b>User Profiles :</b> Personalize your profile with a name,
+              profile picture, and more.
             </ListItem>
           </UnorderedList>
           <div className="features-sec">

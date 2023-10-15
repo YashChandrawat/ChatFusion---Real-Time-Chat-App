@@ -245,14 +245,21 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
-            borderBottom={colorMode === "light" ? "2px solid black" : "2px solid white"}
+            borderBottom={
+              colorMode === "light" ? "2px solid black" : "2px solid white"
+            }
             color={colorMode === "light" ? "black" : "white"} // Adjust the text color
           >
             <IconButton
               d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
-              background={colorMode === "light" ? "#4f4587" : "#273443"}
+              style={{
+                color: colorMode === "light" ? "black" : "white",
+                background: colorMode === "light" ? "transparent" : "#273443",
+                border: colorMode === "light" ? "none" : "none",
+                marginRight : "5%"
+              }}
             />
 
             {messages &&
@@ -349,7 +356,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     style={{
                       marginRight: "1%",
                       color: colorMode === "light" ? "black" : "white",
-                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                      background:
+                        colorMode === "light" ? "transparent" : "#273443",
+                      border:
+                        colorMode === "light" ? "1px solid black" : "none",
                     }}
                   />
                 </Tooltip>
@@ -362,7 +372,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     style={{
                       marginRight: "1%",
                       color: colorMode === "light" ? "black" : "white",
-                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                      background:
+                        colorMode === "light" ? "transparent" : "#273443",
+                      border:
+                        colorMode === "light" ? "1px solid black" : "none",
                     }}
                   />
                 </Tooltip>
@@ -386,7 +399,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     style={{
                       marginLeft: "1%",
                       color: colorMode === "light" ? "black" : "white",
-                      background: colorMode === "light" ? "#8c86a6" : "#273443",
+                      background:
+                        colorMode === "light" ? "transparent" : "#273443",
+                      border:
+                        colorMode === "light" ? "1px solid black" : "none",
                     }}
                     color={colorMode === "light" ? "black" : "black"}
                   />
@@ -409,7 +425,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             pb={3}
             fontFamily="Montserrat"
             color={colorMode === "light" ? "white" : "black"}
-            textShadow={colorMode === "light" ? "1px 1px 5px #000" : "1px 1px 3px #fff"}
+            textShadow={
+              colorMode === "light" ? "1px 1px 5px #000" : "1px 1px 3px #fff"
+            }
           >
             <span>C</span>
             <span>H</span>
@@ -428,7 +446,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             <Text
               fontSize="xl"
               color={colorMode === "light" ? "black" : "white"}
-              textShadow={colorMode === "light" ? "1px 1px 2px #000" : "1px 1px 2px #fff"}
+              textShadow={
+                colorMode === "light" ? "1px 1px 2px #000" : "1px 1px 2px #fff"
+              }
             >
               Created by Yash Chandrawat, Vedika Patidar, Vishal Makwana
             </Text>

@@ -6,8 +6,11 @@
   color: white;
 }
 
+.App2{
+  color:black
+}
+
 .App {
-  color: black;
   min-height: 100vh;
   min-width: 100vw;
   display: flex;

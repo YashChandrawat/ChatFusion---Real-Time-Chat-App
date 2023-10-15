@@ -10,6 +10,7 @@ import { Avatar, Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import "./MyChats.css";
 import { useColorMode } from "@chakra-ui/react";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 const MyChats = ({ fetchAgain }) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -77,18 +78,33 @@ const MyChats = ({ fetchAgain }) => {
         }}
       >
         INBOX
-        <GroupChatModal>
-          <Button
-            d="flex"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-            style={{
-              color: colorMode === "light" ? "black" : "white",
-            }}
-          >
-            New Group Chat
-          </Button>
-        </GroupChatModal>
+        <div className="display-none">
+          <GroupChatModal>
+            <Button
+              d="flex"
+              fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+              rightIcon={<AddIcon />}
+              style={{
+                color: colorMode === "light" ? "black" : "white",
+              }}
+            >
+              New Group Chat
+            </Button>
+          </GroupChatModal>
+        </div>
+        <div className="display-block">
+          <GroupChatModal>
+            <Button
+              d="flex"
+              fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+              style={{
+                color: colorMode === "light" ? "black" : "white",
+              }}
+            >
+              <AiOutlineUsergroupAdd/>
+            </Button>
+          </GroupChatModal>
+        </div>
       </Box>
       <Box
         d="flex"

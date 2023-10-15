@@ -42,9 +42,10 @@ const ProfileModal = ({ user, children }) => {
               d={{ base: "flex" }}
               icon={<PhoneIcon />}
               style={{
-                backgroundColor: "#273443",
                 marginRight: "6%",
-                color: colorMode === "light" ? "white" : "white",
+                color: colorMode === "light" ? "black" : "white",
+                background: colorMode === "light" ? "transparent" : "#273443",
+                border: colorMode === "light" ? "1px solid black" : "none",
               }}
             />
           </Tooltip>
@@ -54,9 +55,10 @@ const ProfileModal = ({ user, children }) => {
               icon={<BiSolidVideo />}
               onClick={temp}
               style={{
-                backgroundColor: "#273443",
                 marginRight: "6%",
-                color: colorMode === "light" ? "white" : "white",
+                color: colorMode === "light" ? "black" : "white",
+                background: colorMode === "light" ? "transparent" : "#273443",
+                border: colorMode === "light" ? "1px solid black" : "none",
 
                 // background: colorMode === "light" ? "#4f4587" : "#273443",
               }}
@@ -68,9 +70,10 @@ const ProfileModal = ({ user, children }) => {
               icon={<HamburgerIcon />}
               onClick={onOpen}
               style={{
-                backgroundColor: "#273443",
                 marginRight: "6%",
-                color: colorMode === "light" ? "white" : "white",
+                color: colorMode === "light" ? "black" : "white",
+                background: colorMode === "light" ? "transparent" : "#273443",
+                border: colorMode === "light" ? "1px solid black" : "none",
               }}
             />
           </Tooltip>

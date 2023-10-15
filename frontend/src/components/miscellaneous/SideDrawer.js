@@ -41,8 +41,9 @@ import { useColorMode } from "@chakra-ui/react";
 import { MdDarkMode } from "react-icons/md";
 import { FaMoon } from "react-icons/fa";
 import { BsFillSunFill } from "react-icons/bs";
+import { AiFillHome } from "react-icons/ai";
 
-function SideDrawer() {
+function SideDrawer(props) {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -136,6 +137,11 @@ function SideDrawer() {
   function handleToggleColorMode() {
     toggleColorMode();
   }
+
+  function handleHomeButton() {
+    history.push("/chats");
+  }
+
   return (
     <>
       <Box
@@ -156,6 +162,7 @@ function SideDrawer() {
             fontFamily="Montserrat"
             d={"flex"}
             color={colorMode === "light" ? "black" : "white"}
+            className="display-only"
           >
             <img
               src={colorMode === "light" ? FaviconLight : favicon}
@@ -165,12 +172,21 @@ function SideDrawer() {
             CHAT-FUSION
           </Text>
         </div>
+        <img
+          src={colorMode === "light" ? FaviconLight : favicon}
+          alt="favi"
+          className="favicon1"
+        />
         <div>
           <Tooltip label="Search Users to chat" hasArrow placement="right">
             <Button
               variant="ghost"
               onClick={onOpen}
               color={colorMode === "light" ? "black" : "white"}
+              isDisabled={props.buttonProp}
+              style={{
+                display: `${props.display}`,
+              }}
             >
               <i className="fas fa-search" color="black"></i>
               <Text
@@ -182,6 +198,7 @@ function SideDrawer() {
               </Text>
             </Button>
           </Tooltip>
+
           <Menu>
             <MenuButton p={1}>
               <NotificationBadge
@@ -209,6 +226,16 @@ function SideDrawer() {
               ))}
             </MenuList>
           </Menu>
+          <Button
+            onClick={handleHomeButton}
+            mr={2}
+            style={{
+              background: colorMode === "light" ? "#d3d3d3" : "none",
+              display: `${props.displayHome === "block" ? "inline" : "none"}`,
+            }}
+          >
+            <AiFillHome fontSize={"20px"}/>
+          </Button>
           <Button
             onClick={handleToggleColorMode}
             mr={2}
