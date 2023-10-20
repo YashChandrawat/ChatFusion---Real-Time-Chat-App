@@ -101,7 +101,7 @@ const MyChats = ({ fetchAgain }) => {
                 color: colorMode === "light" ? "black" : "white",
               }}
             >
-              <AiOutlineUsergroupAdd />
+              <AiOutlineUsergroupAdd/>
             </Button>
           </GroupChatModal>
         </div>
