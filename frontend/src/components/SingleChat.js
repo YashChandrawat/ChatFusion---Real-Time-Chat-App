@@ -32,6 +32,7 @@ import { useColorMode } from "@chakra-ui/react";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
+import React, { useRef } from 'react';
 const ENDPOINT = "http://localhost:5000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
 
@@ -57,6 +58,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   function insertEmoji(e) {
     setNewMessage((prevMessage) => prevMessage + e);
   }
+
+  const fileInputRef = useRef(null); 
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
+
 
   const defaultOptions = {
     loop: true,
@@ -102,29 +113,32 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   const sendMessageOnClick = () => {
-    if (newMessage) {
+    if (newMessage || selectedFile) {
       try {
         const config = {
           headers: {
-            "Content-type": "application/json",
+            "Content-type": "multipart/form-data", // Change content type
             Authorization: `Bearer ${user.token}`,
           },
         };
-        setNewMessage("");
-        const messageData = {
-          content: newMessage,
-          chatId: selectedChat._id,
-        };
 
-        axios.post("/api/message", messageData, config).then((response) => {
+        const formData = new FormData();
+        formData.append("content", newMessage);
+        formData.append("chatId", selectedChat._id);
+        if (selectedFile) {
+          formData.append("file", selectedFile);
+        }
+        debugger
+        axios.post("/api/message", formData, config).then((response) => {
           const { data } = response;
           socket.emit("new message", data);
           setMessages([...messages, data]);
+          setSelectedFile(null); // Clear the selected file
         });
       } catch (error) {
         toast({
           title: "Error Occurred!",
-          description: "Failed to send the Message",
+          description: "Failed to send the message",
           status: "error",
           duration: 5000,
           isClosable: true,
@@ -133,6 +147,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       }
     }
   };
+
 
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
@@ -349,20 +364,28 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <div className="input-section">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept=".jpg, .jpeg, .png, .gif"
+                  style={{ display: "none" }}
+                  onChange={handleFileInputChange}
+                />
                 <Tooltip label="Attach File" hasArrow placement="bottom">
-                  <IconButton
-                    d={{ base: "flex" }}
-                    icon={<AiOutlinePaperClip />}
-                    style={{
-                      marginRight: "1%",
-                      color: colorMode === "light" ? "black" : "white",
-                      background:
-                        colorMode === "light" ? "transparent" : "#273443",
-                      border:
-                        colorMode === "light" ? "1px solid black" : "none",
-                    }}
-                  />
+                  <div onClick={() => document.getElementById("fileInput").click()}>
+                    <IconButton
+                      d={{ base: "flex" }}
+                      icon={<AiOutlinePaperClip />}
+                      style={{
+                        marginRight: "1%",
+                        color: colorMode === "light" ? "black" : "white",
+                        background: colorMode === "light" ? "transparent" : "#273443",
+                        border: colorMode === "light" ? "1px solid black" : "none",
+                      }}
+                    />
+                  </div>
                 </Tooltip>
+
 
                 <Tooltip label="Attach Emoji" hasArrow placement="bottom">
                   <IconButton
